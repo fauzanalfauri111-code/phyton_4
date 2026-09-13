@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Adventure — Misi 04</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#18202a;--muted:#667085;--primary:#db2777;--border:#e6e8ef;--code:#171923;--accent:#f59e0b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:980px;margin:auto;padding:20px}.hero{background:linear-gradient(135deg,#4a102d,#db2777);color:white;border-radius:24px;padding:34px 28px;margin:18px 0 22px;position:relative;overflow:hidden}.hero:after{content:"🤖";position:absolute;right:18px;bottom:-28px;font-size:125px;opacity:.15}
+.badge{display:inline-block;background:rgba(255,255,255,.14);padding:6px 12px;border-radius:99px;font-size:13px}h1{font-size:clamp(30px,6vw,52px);line-height:1.05;margin:14px 0 8px}.hero p{max-width:720px;color:#ffe8f2}
+.progress{height:10px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden;margin-top:18px}.bar{height:100%;width:0;background:#fff;border-radius:99px;transition:.4s}
+nav{position:sticky;top:0;z-index:5;background:rgba(246,247,251,.94);backdrop-filter:blur(8px);padding:10px 0;border-bottom:1px solid var(--border)}.navinner{max-width:980px;margin:auto;padding:0 20px;display:flex;gap:8px;overflow:auto}.navinner a{white-space:nowrap;text-decoration:none;color:var(--text);background:white;border:1px solid var(--border);padding:8px 12px;border-radius:10px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 5px 18px rgba(20,20,50,.04)}h2{margin-top:0;font-size:25px}h3{margin-bottom:7px}.time{float:right;color:var(--primary);font-size:13px;font-weight:700}.callout{background:#fff1f7;border-left:5px solid var(--primary);padding:15px;border-radius:12px}.code{background:var(--code);color:#e9edf5;border-radius:14px;padding:18px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;white-space:pre}
+button,.btn{border:0;border-radius:12px;padding:11px 16px;background:var(--primary);color:white;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;margin:5px 4px 5px 0}.btn.secondary,button.secondary{background:#fce7f3;color:#9d174d}
+input,textarea{width:100%;padding:11px 13px;border:1px solid #d8dbe5;border-radius:10px;font:inherit;margin:6px 0 12px}textarea{min-height:90px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.mission,.level{border:1px solid var(--border);border-radius:14px;padding:15px}.check{display:flex;gap:9px;align-items:center;margin:8px 0}.check input{width:auto;margin:0}.quiz label{display:block;padding:10px;border:1px solid var(--border);border-radius:10px;margin:8px 0;cursor:pointer}.result{font-weight:700;margin-top:10px}.chat{background:#111827;color:#fff;border-radius:18px;padding:18px}.bubble{padding:10px 13px;border-radius:14px;margin:8px 0;max-width:82%}.bot{background:#374151}.user{background:#db2777;margin-left:auto}.chat input{max-width:75%;display:inline-block}.chat button{display:inline-block}.tip{background:#fff7ed;border-left:5px solid var(--accent);padding:15px;border-radius:12px}
+footer{text-align:center;color:var(--muted);padding:30px 10px}@media(max-width:600px){.container{padding:12px}.hero{padding:26px 20px}.card{padding:18px}.time{float:none;display:block;margin-bottom:5px}}
+</style>
+</head>
+<body>
+<nav><div class="navinner">
+<a href="#misi">🎯 Misi</a><a href="#gabung">🧩 Gabungkan</a><a href="#chatbot">🤖 Chatbot</a><a href="#challenge">🔥 Challenge</a><a href="#debug">🕵️ Debug</a><a href="#quiz">🧠 Quiz</a><a href="#refleksi">📝 Refleksi</a>
+</div></nav>
+
+<main class="container">
+<section class="hero">
+<span class="badge">INFORMATIKA • KELAS X • 2 JP / 90 MENIT</span>
+<h1>🐍 Python Adventure</h1>
+<h2>🏆 Misi 04 — Boss Final: Buat Chatbot!</h2>
+<p>Ini adalah misi terakhir dari rangkaian pertama. Kamu akan menggabungkan kemampuan yang sudah dipelajari untuk membuat <b>Chatbot Teman Ngobrol</b>.</p>
+<div class="progress"><div class="bar" id="bar"></div></div><small id="progressText">Progress: 0%</small>
+</section>
+
+<section class="card" id="misi">
+<span class="time">⏱️ 5 menit</span><h2>🎯 Boss Mission</h2>
+<p>Selama tiga pertemuan sebelumnya, kamu sudah belajar:</p>
+<div class="grid">
+<div class="mission">📢 <b>print()</b><br>Menampilkan informasi</div>
+<div class="mission">📦 <b>Variabel</b><br>Menyimpan data</div>
+<div class="mission">⌨️ <b>input()</b><br>Menerima data pengguna</div>
+<div class="mission">➗ <b>Operator</b><br>Melakukan perhitungan</div>
+<div class="mission">🧠 <b>if</b><br>Mengecek kondisi</div>
+<div class="mission">🔀 <b>elif / else</b><br>Memilih respons</div>
+</div>
+<div class="callout"><b>MISI FINAL:</b> Gabungkan skill tersebut menjadi sebuah chatbot sederhana yang dapat menyapa pengguna dan memberikan respons berbeda.</div>
+<label class="check"><input type="checkbox" class="progressCheck"> Saya memahami tujuan proyek.</label>
+<label class="check"><input type="checkbox" class="progressCheck"> Saya siap membuat chatbot.</label>
+</section>
+
+<section class="card" id="gabung">
+<span class="time">⏱️ 15 menit</span><h2>🧩 Misi 1 — Gabungkan Skill</h2>
+<p>Perhatikan bagaimana beberapa materi sebelumnya dapat digunakan bersama.</p>
+<div class="code">nama = input("Siapa namamu? ")
+
+print("Halo", nama, "!")
+print("Selamat datang di chatbot.")
+
+perasaan = input("Bagaimana perasaanmu hari ini? ")
+
+if perasaan == "senang":
+    print("Wah, ikut senang! 😄")
+elif perasaan == "sedih":
+    print("Semoga harimu segera membaik 🤗")
+else:
+    print("Terima kasih sudah bercerita.")</div>
+<p><b>Tugas:</b> jalankan kode tersebut di Google Colab. Kemudian ubah respons chatbot sesuai gaya kamu.</p>
+<a class="btn" href="https://colab.research.google.com/" target="_blank">🚀 Buka Google Colab</a>
+</section>
+
+<section class="card" id="chatbot">
+<span class="time">⏱️ 35 menit</span><h2>🤖 BOSS FINAL — Chatbot Teman Ngobrol</h2>
+<p>Bangun chatbot versimu. Mulai dari template berikut, lalu kembangkan.</p>
+<h3>Level Dasar</h3>
+<div class="code">print("🤖 CHATBOT TEMAN NGOBROL")
+print("========================")
+
+nama = input("Siapa namamu? ")
+
+print("Halo", nama, "!")
+print("Senang bertemu denganmu.")
+
+perasaan = input("Bagaimana perasaanmu hari ini? ")
+
+if perasaan == "senang":
+    print("Wah, ikut senang! 😄")
+elif perasaan == "sedih":
+    print("Semoga harimu segera membaik 🤗")
+elif perasaan == "marah":
+    print("Tarik napas dalam-dalam dulu 😌")
+else:
+    print("Aku mengerti. Terima kasih sudah bercerita.")</div>
+
+<h3>Level Kreator</h3>
+<p>Tambahkan pertanyaan tentang hobi dan cita-cita.</p>
+<div class="code">hobi = input("Apa hobimu? ")
+cita_cita = input("Apa cita-citamu? ")
+
+print("Wah,", hobi, "pasti menyenangkan!")
+print("Semoga kamu bisa menjadi", cita_cita, "! 🚀")</div>
+
+<h3>🎨 Coba Demo Chatbot</h3>
+<div class="chat">
+<div class="bubble bot">🤖 Halo! Aku chatbot Python. Siapa namamu?</div>
+<div id="chatMessages"></div>
+<input id="chatInput" placeholder="Ketik jawaban..." onkeydown="if(event.key==='Enter')chatSend()">
+<button onclick="chatSend()">Kirim</button>
+</div>
+<p class="tip"><b>Catatan penting:</b> Demo di website ini hanya simulasi menggunakan JavaScript. Produk yang harus kamu buat adalah <b>chatbot Python di Google Colab</b>.</p>
+<a class="btn" href="https://colab.research.google.com/" target="_blank">💻 Buat Chatbot Python</a>
+</section>
+
+<section class="card" id="challenge">
+<span class="time">⏱️ 15 menit</span><h2>🔥 Challenge Level</h2>
+<div class="grid">
+<div class="level"><b>⭐ Level 1 — Chatbot Dasar</b><br>Nama + perasaan + respons.</div>
+<div class="level"><b>⭐⭐ Level 2 — Chatbot Sahabat</b><br>Tambahkan hobi, makanan favorit, dan cita-cita.</div>
+<div class="level"><b>⭐⭐⭐ Level 3 — Chatbot Unik</b><br>Buat chatbot dengan tema sendiri: konsultan belajar, teman game, motivator, atau chatbot islami.</div>
+</div>
+<h3>💡 Ide respons</h3>
+<ul><li>📚 Chatbot teman belajar</li><li>🎮 Chatbot gamer</li><li>⚽ Chatbot olahraga</li><li>🌱 Chatbot motivasi</li><li>🕌 Chatbot pengingat kebaikan</li></ul>
+</section>
+
+<section class="card" id="debug">
+<span class="time">⏱️ 5 menit</span><h2>🕵️ Debugging Mission</h2>
+<p>Program berikut error. Temukan penyebabnya.</p>
+<div class="code">nama = input("Nama: ")
+
+if nama == "Budi"
+    print("Halo Budi!")
+else:
+    print("Halo", nama)</div>
+<p><b>Pertanyaan:</b> Apa yang kurang pada kode tersebut?</p>
+<textarea placeholder="Tulis jawabanmu..."></textarea>
+<div class="callout"><b>Petunjuk:</b> Ingat aturan penulisan kondisi <code>if</code>.</div>
+</section>
+
+<section class="card" id="quiz">
+<span class="time">⏱️ 5 menit</span><h2>🧠 Final Quiz</h2>
+<div class="quiz">
+<p><b>1. Fungsi apa yang digunakan untuk menerima jawaban pengguna?</b></p>
+<label><input type="radio" name="q1" value="1"> input()</label><label><input type="radio" name="q1" value="0"> print()</label><label><input type="radio" name="q1" value="0"> if</label>
+<p><b>2. Struktur apa yang digunakan untuk membuat chatbot memberi respons berbeda?</b></p>
+<label><input type="radio" name="q2" value="1"> if / elif / else</label><label><input type="radio" name="q2" value="0"> print saja</label><label><input type="radio" name="q2" value="0"> komentar</label>
+<p><b>3. Apa tujuan utama proyek hari ini?</b></p>
+<label><input type="radio" name="q3" value="1"> Menggabungkan beberapa konsep Python menjadi program</label><label><input type="radio" name="q3" value="0"> Menghafal semua syntax Python</label><label><input type="radio" name="q3" value="0"> Membuat website tanpa coding</label>
+<button onclick="quiz()">Cek Jawaban</button><div id="quizResult" class="result"></div>
+</div>
+</section>
+
+<section class="card" id="refleksi">
+<span class="time">⏱️ 10 menit</span><h2>📝 Refleksi Akhir</h2>
+<label>Nama<input placeholder="Nama lengkap"></label>
+<label>Proyek chatbot saya bertema...<textarea placeholder="Tulis tema chatbotmu..."></textarea></label>
+<label>Konsep Python yang paling saya pahami<textarea placeholder="Misalnya variabel, input, if..."></textarea></label>
+<label>Konsep yang masih membingungkan<textarea placeholder="Tulis dengan jujur..."></textarea></label>
+<label>Jika diberi 1 minggu lagi, saya ingin mengembangkan...<textarea placeholder="Ide pengembangan..."></textarea></label>
+<h3>🏆 Checklist Boss Final</h3>
+<label class="check"><input type="checkbox" class="progressCheck"> Chatbot menerima input pengguna.</label>
+<label class="check"><input type="checkbox" class="progressCheck"> Chatbot menggunakan variabel.</label>
+<label class="check"><input type="checkbox" class="progressCheck"> Chatbot menggunakan if/elif/else.</label>
+<label class="check"><input type="checkbox" class="progressCheck"> Chatbot memiliki minimal 3 respons.</label>
+<label class="check"><input type="checkbox" class="progressCheck"> Saya memodifikasi program sendiri.</label>
+<button onclick="window.print()">🖨️ Cetak / Simpan sebagai PDF</button>
+</section>
+
+<section class="card">
+<h2>🎉 SELAMAT! BOSS FINAL SELESAI</h2>
+<div class="callout"><b>Kamu telah menyelesaikan Python Adventure Level 1.</b><br><br>
+Kamu sudah belajar bahwa program dapat menerima data, menyimpan data, memproses data, dan mengambil keputusan. Selanjutnya kamu siap naik ke proyek Python yang lebih besar. 🚀</div>
+</section>
+<footer>Python Adventure • LKPD Informatika Kelas X • Misi 04</footer>
+</main>
+
+<script>
+function updateProgress(){const c=[...document.querySelectorAll('.progressCheck')],d=c.filter(x=>x.checked).length,p=Math.round(d/c.length*100);document.getElementById('bar').style.width=p+'%';document.getElementById('progressText').textContent='Progress: '+p+'%';}
+document.querySelectorAll('.progressCheck').forEach(x=>x.addEventListener('change',updateProgress));
+function quiz(){let s=0;document.querySelectorAll('input[type=radio]:checked').forEach(x=>s+=Number(x.value));document.getElementById('quizResult').textContent=s===3?'🎉 Sempurna! 3/3 benar.':'💡 Belum sempurna. Coba periksa lagi materi sebelumnya.';}
+let chatStep=0;
+function chatSend(){const inp=document.getElementById('chatInput'),v=inp.value.trim();if(!v)return;const box=document.getElementById('chatMessages');const u=document.createElement('div');u.className='bubble user';u.textContent=v;box.appendChild(u);const b=document.createElement('div');b.className='bubble bot';let reply;if(chatStep===0){reply='🤖 Senang berkenalan, '+v+'! Bagaimana perasaanmu hari ini?';}else if(chatStep===1){const x=v.toLowerCase();reply=x.includes('senang')?'🤖 Wah, ikut senang! 😄':x.includes('sedih')?'🤖 Semoga harimu segera membaik. 🤗':x.includes('marah')?'🤖 Tarik napas pelan-pelan dulu. 😌':'🤖 Terima kasih sudah bercerita!';}else{reply='🤖 Menarik! Terima kasih sudah ngobrol denganku. 🚀';}b.textContent=reply;box.appendChild(b);chatStep++;inp.value='';box.scrollTop=box.scrollHeight;}
+</script>
+</body>
+</html>
